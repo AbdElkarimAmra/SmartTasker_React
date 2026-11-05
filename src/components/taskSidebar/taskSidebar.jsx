@@ -1,7 +1,7 @@
 import {Card} from "@/components/ui/card";
 import styles from "./taskSidebar.module.css";
 import { UserProfile } from "../userProfile/userProfile";
-import  { CreateTaskForm } from "../createTaskForm/CreateTaskForm";
+import { CreateTaskForm } from "../createTaskForm/createTaskForm.jsx";
 import { Logout } from "../logout/logout";
 import { TasksContext } from "@/context/tasks.context";
 import {useContext} from "react";
@@ -11,7 +11,6 @@ export function TaskSidebar() {
   const user = Cookies.get("user");
   const parsedUserCookie = JSON.parse(user);
     return (
-        console.log("tasks",tasks),
         <section className={`fixed right-4 top-4 ${styles.sidebarHeight}`}>
             <Card className="flex flex-col h-full w-full p-6 justify-between">
                 <UserProfile firstName= {parsedUserCookie? parsedUserCookie.firstName : "Anonymous"} />

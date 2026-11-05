@@ -25,10 +25,6 @@ export function TasksPagination() {
       setMeta(tasks.pagination.meta ?? null);
     }
   }, [tasks]);
-  console.log("previious page",previousPage)
-  console.log("next page",nextPage)
-  console.log(meta);
-
   return (
     <Pagination>
       <PaginationContent className="text-white">

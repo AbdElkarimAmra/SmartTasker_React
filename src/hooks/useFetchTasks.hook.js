@@ -9,26 +9,28 @@ import Cookies from "js-cookie";
  * with the query parameters.
  * @returns {Promise<object>} - The response as a JSON object with the tasks.
  */
-const fetchTasks = async({queryKey}) => {
-    const [_key, {order= "asc", limit = 5, page = 1}] = queryKey;
-    const token = Cookies.get("token");
+const fetchTasks = async ({ queryKey }) => {
+  const [_key, { order = "asc", limit = 5, page = 1 }] = queryKey;
+  const token = Cookies.get("token");
 
-    const url = new URL(`${import.meta.env.VITE_API_URL}tasks`);
-    url.searchParams.append("order", order);
-    url.searchParams.append("limit", limit);
-    url.searchParams.append("page", page);
+  const url = new URL(`${import.meta.env.VITE_API_URL}tasks`);
+  url.searchParams.append("order", order);
+  url.searchParams.append("limit", limit);
+  url.searchParams.append("page", page);
 
-    const response = await fetch(url, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        }
-    });
-    return await response.json();
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return response.json();
+};
 
-
-}
 /**
  * Hook that fetches tasks from the API using react-query.
  *

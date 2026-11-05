@@ -43,6 +43,7 @@ export default function Login() {
 
   /** Function to handle what will happen when the form is submitted */
   function onSubmit(values) {
+    console.log("values" , values);
     mutate(values);
     form.reset();
   }

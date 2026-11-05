@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
- 
+
 import {
   Form,
   FormControl,
@@ -32,6 +32,7 @@ import { use } from "react";
 import { is } from "date-fns/locale";
 import {Toaster} from "@/components/ui/toaster"
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 
 
@@ -55,6 +56,7 @@ export default function Signup() {
   function onSubmit (values) {
     mutate(values);
     form.reset();
+    console.log(values);
   }
 
   useEffect(() => { // this function is triggered when isSuccessful variable changes. if the array was empty, it would run on every render

@@ -71,15 +71,15 @@ export  function CreateTaskForm() {
     });
   }
 
-  useEffect(() => {
-    if (isSuccess) {
-      //load toast
-      toast({
-        title: "Task Created Successfully",
-        description: "Your task has been created",
-      })
-    }
-  },[isSuccess])
+ useEffect(() => {
+  if (isSuccess) {
+    // load toast
+    toast({
+      title: "Task Created Successfully",
+      description: "Your task has been created",
+    });
+  }
+}, [isSuccess]);
 
     useEffect(() => {
     if (isError) {
